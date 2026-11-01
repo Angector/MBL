@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
 import { siteConfig } from '@/data/site-config';
+import { withBasePath } from '@/lib/utils/base-path';
 
 /** Text logo by default. Set `logoSrc` in site-config.ts to switch to an image logo. */
 export function Logo({ locale }: { locale: Locale }) {
@@ -9,7 +10,7 @@ export function Logo({ locale }: { locale: Locale }) {
   return (
     <Link href={`/${locale}`} aria-label={name} className="inline-flex flex-col items-center leading-none">
       {siteConfig.logoSrc ? (
-        <Image src={siteConfig.logoSrc} alt={name} width={160} height={48} priority className="h-10 w-auto" />
+        <Image src={withBasePath(siteConfig.logoSrc)} alt={name} width={160} height={48} priority className="h-10 w-auto" />
       ) : (
         <>
           <span className="text-2xl font-bold tracking-wide text-olive-deep md:text-3xl">{name}</span>

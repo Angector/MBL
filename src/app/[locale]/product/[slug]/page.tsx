@@ -15,6 +15,7 @@ import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Tabs } from '@/components/ui/Tabs';
 
+export const dynamicParams = false;
 export const generateStaticParams = () => locales.flatMap((locale) => getAllProducts().map((p) => ({ locale, slug: p.slug })));
 type Params = Promise<{ locale: string; slug: string }>;
 

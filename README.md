@@ -78,3 +78,17 @@ When you add a price, also fill `source` and `updatedAt`. Product structured dat
 - Product specs, colours, storage, prices and stock are empty on purpose until real data is entered in `products.ts`; filters/comparison rows fill in automatically as data appears.
 - Info pages (about, contact, FAQ, shipping, returns, warranty, privacy, terms) contain placeholder text for you to fill.
 
+
+## Deploy to GitHub Pages
+
+Static export (`output: 'export'`, `trailingSlash`) + GitHub Actions. Base path comes from `NEXT_PUBLIC_BASE_PATH` /
+`GITHUB_REPOSITORY` (only when `GITHUB_PAGES=true`); locally nothing changes. All `/public` asset URLs go through
+`src/lib/utils/base-path.ts`, and Nian `@font-face` rules are emitted by `components/layout/FontFaces.tsx`.
+
+1. Push the project to a repo named `mobile-store` on branch `main`.
+2. Run `npm install` once locally and commit `package-lock.json` (the workflow uses `npm ci` when it exists).
+3. Repo -> Settings -> Pages -> Build and deployment -> Source: **GitHub Actions**.
+4. Push to `main` (or run the workflow manually). Site: `https://USERNAME.github.io/mobile-store/`.
+
+Static-hosting limits: no middleware or server redirects (the root `public/index.html` forwards to `./fa/`), no server-side
+`searchParams` (shop and search read the query string in the browser), and unknown URLs show the generated 404 page.

@@ -7,6 +7,7 @@ import { infoPages, isLocale, locales, type InfoPage } from '@/lib/i18n/config';
 import { Accordion } from '@/components/ui/Accordion';
 import { PageShell } from '@/components/ui/PageShell';
 
+export const dynamicParams = false;
 export const generateStaticParams = () => locales.flatMap((locale) => infoPages.map((slug) => ({ locale, slug })));
 type Params = Promise<{ locale: string; slug: string }>;
 const isInfoPage = (v: string): v is InfoPage => (infoPages as readonly string[]).includes(v);

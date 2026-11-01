@@ -16,6 +16,7 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Smartphone } from 'lucide-react';
 
 type Params = Promise<{ locale: string; brand: string }>;
+export const dynamicParams = false;
 export const generateStaticParams = () => locales.flatMap((locale) => brandIds.map((brand) => ({ locale, brand })));
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {

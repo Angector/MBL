@@ -13,6 +13,7 @@ import { ToastProvider } from '@/components/providers/ToastProvider';
 import { UserListsProvider } from '@/components/providers/UserListsProvider';
 import { AnnouncementBar } from '@/components/layout/AnnouncementBar';
 import { Footer } from '@/components/layout/Footer';
+import { FontFaces } from '@/components/layout/FontFaces';
 import { Header } from '@/components/layout/Header';
 
 const latin = Inter({ subsets: ['latin'], variable: '--font-latin', display: 'swap' });
@@ -45,6 +46,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
 
   return (
     <html lang={locale} dir={dir} className={`${latin.variable} ${display.variable}`}>
+      <head><FontFaces /></head>
       <body className="flex min-h-screen flex-col antialiased">
         <noscript><style>{'.reveal{opacity:1!important;transform:none!important}'}</style></noscript>
         <ToastProvider closeLabel={t.header.close}>

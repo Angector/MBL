@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { Smartphone } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import { withBasePath } from '@/lib/utils/base-path';
 import { cn } from '@/lib/utils/cn';
 
 interface Props {
@@ -39,7 +40,7 @@ export function AssetImage({ src, alt, sizes, fit = 'cover', priority, className
   return (
     <Image
       ref={ref}
-      src={src}
+      src={withBasePath(src)}
       alt={alt}
       fill
       sizes={sizes}
